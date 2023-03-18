@@ -25,44 +25,39 @@ namespace Lab4._2
     public class Model
     {
         private int a = 0, b = 0, c = 0;
+        private const int min = 0, max = 100;
         public System.EventHandler observer;
         
-        public void setA(int a)
+        private int getChekedInterval(int newNum)
         {
-            if (a < 0 || a > 100)
-            {
-                this.a = this.b = this.c = (a > 100) ? 100 : 0;
-            }
-            else if (a > this.b)
-            {
-                if (a > this.c)
-                    this.a = this.b = this.c = a;
-                else
-                    this.a = this.b = a;
-            }
-            else
-                this.a = a;
+            return ((newNum > 100) ? 100 : ((newNum < 0) ? 0 : newNum));
         }
-        public void setB(int b)
+        public void setA(int newA)
         {
-            if (b >= 0 && b <= 100 && b >= a && b <= c)
-            {
-                this.b = b;
-            }
+            newA = getChekedInterval(newA);
+            if (newA > b) b = newA;
+            else if (newA > c) c = newA;
+            else a = newA;
+
+            observer.Invoke(this, null);
         }
-        public void setC(int c)
+        public void setB(int newB)
         {
-            if (c < 0 || c > 100)
-                this.c = this.b = this.a = (c > 100) ? 100 : 0;
-            else if (c < this.b)
-            {
-                if (c < this.a)
-                    this.c = this.b = this.a = c;
-                else
-                    this.c = this.b = c;
-            }
-            else
-                this.c = c;
+            newB = getChekedInterval(newB);
+            if (newB < a) b = a;
+            else if (newB > c) b = c;
+            else b = newB;
+
+            observer.Invoke(this, null);
+        }
+        public void setC(int newC)
+        {
+            newC = getChekedInterval(newC);
+            if (newC < b) b = newC;
+            else if (newC < a) a = newC;
+            else c = newC;
+
+            observer.Invoke(this, null);
         }
 
         public int getA() { return this.a; }
