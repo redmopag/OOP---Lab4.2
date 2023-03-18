@@ -54,6 +54,7 @@
             this.textBoxA.Name = "textBoxA";
             this.textBoxA.Size = new System.Drawing.Size(120, 22);
             this.textBoxA.TabIndex = 0;
+            this.textBoxA.TextChanged += new System.EventHandler(this.textBoxA_TextChanged);
             // 
             // numericUpDownA
             // 

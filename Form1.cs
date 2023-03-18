@@ -12,12 +12,25 @@ namespace Lab4._2
 {
     public partial class Form1 : Form
     {
+        private Model model;
         public Form1()
         {
             InitializeComponent();
+            model = new Model();
+            model.observer += new System.EventHandler(this.getUpdateaFromModel);
         }
 
         private void numericUpDownA_ValueChanged(object sender, EventArgs e)
+        {
+            model.setA(Decimal.ToInt32(numericUpDownA.Value));
+        }
+
+        private void getUpdateaFromModel(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxA_TextChanged(object sender, EventArgs e)
         {
 
         }
