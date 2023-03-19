@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,19 +21,91 @@ namespace Lab4._2
             model.observer += new System.EventHandler(this.getUpdateaFromModel);
         }
 
-        private void numericUpDownA_ValueChanged(object sender, EventArgs e)
-        {
-            model.setA(Decimal.ToInt32(numericUpDownA.Value));
-        }
-
+        // Функция, обрабатывающая обновление модели
         private void getUpdateaFromModel(object sender, EventArgs e)
         {
+            // set textBox
+            textBoxA.Text = model.getA().ToString();
+            textBoxB.Text = model.getB().ToString();
+            textBoxC.Text = model.getC().ToString();
 
+            // set numericUpDown
+            numericUpDownA.Value = model.getA();
+            numericUpDownB.Value = model.getB();
+            numericUpDownC.Value = model.getC();
+
+            // set trackBar
+            trackBarA.Value = model.getA();
+            trackBarB.Value = model.getB();
+            trackBarC.Value = model.getC();
         }
 
-        private void textBoxA_TextChanged(object sender, EventArgs e)
+        // Получение данных целочисленного типа из NumericUpDown
+        private int getValueFromNumeric(object sender)
         {
+            return (Decimal.ToInt32((sender as NumericUpDown).Value));
+        }
+        //
+        // NumericUpDown
+        //
+        private void numericUpDownA_ValueChanged(object sender, EventArgs e)
+        {
+            model.setA(getValueFromNumeric(sender));
+        }
 
+        private void numericUpDownB_ValueChanged(object sender, EventArgs e)
+        {
+            model.setB(getValueFromNumeric(sender));
+        }
+
+        private void numericUpDownC_ValueChanged(object sender, EventArgs e)
+        {
+            model.setC(getValueFromNumeric(sender));
+        }
+
+        // Получнеие данных целочисленного типа из trackBar
+        private int getValueFromTrackBar(object sender)
+        {
+            return (Decimal.ToInt32((sender as TrackBar).Value));
+        }
+        //
+        // trackBar
+        //
+        private void trackBarA_Scroll(object sender, EventArgs e)
+        {
+            model.setA(getValueFromTrackBar(sender));
+        }
+        private void trackBarB_Scroll(object sender, EventArgs e)
+        {
+            model.setB(getValueFromTrackBar(sender));
+        }
+        private void trackBarC_Scroll(object sender, EventArgs e)
+        {
+            model.setC(getValueFromTrackBar(sender));
+        }
+        //
+        // textbox
+        //
+        private int getValueFromTextBox(object sender)
+        {
+            return (Int32.Parse((sender as TextBox).Text));
+        }
+        private void textBoxA_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                model.setA(getValueFromTextBox(sender));
+        }
+
+        private void textBoxB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                model.setB(getValueFromTextBox(sender));
+        }
+
+        private void textBoxC_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                model.setC(getValueFromTextBox(sender));
         }
     }
     public class Model

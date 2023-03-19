@@ -54,7 +54,7 @@
             this.textBoxA.Name = "textBoxA";
             this.textBoxA.Size = new System.Drawing.Size(120, 22);
             this.textBoxA.TabIndex = 0;
-            this.textBoxA.TextChanged += new System.EventHandler(this.textBoxA_TextChanged);
+            this.textBoxA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxA_KeyDown);
             // 
             // numericUpDownA
             // 
@@ -71,6 +71,7 @@
             this.trackBarA.Name = "trackBarA";
             this.trackBarA.Size = new System.Drawing.Size(120, 56);
             this.trackBarA.TabIndex = 2;
+            this.trackBarA.Scroll += new System.EventHandler(this.trackBarA_Scroll);
             // 
             // trackBarB
             // 
@@ -79,6 +80,7 @@
             this.trackBarB.Name = "trackBarB";
             this.trackBarB.Size = new System.Drawing.Size(120, 56);
             this.trackBarB.TabIndex = 3;
+            this.trackBarB.Scroll += new System.EventHandler(this.trackBarB_Scroll);
             // 
             // trackBarC
             // 
@@ -87,6 +89,7 @@
             this.trackBarC.Name = "trackBarC";
             this.trackBarC.Size = new System.Drawing.Size(120, 56);
             this.trackBarC.TabIndex = 4;
+            this.trackBarC.Scroll += new System.EventHandler(this.trackBarC_Scroll);
             // 
             // numericUpDownB
             // 
@@ -94,6 +97,7 @@
             this.numericUpDownB.Name = "numericUpDownB";
             this.numericUpDownB.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownB.TabIndex = 5;
+            this.numericUpDownB.ValueChanged += new System.EventHandler(this.numericUpDownB_ValueChanged);
             // 
             // numericUpDownC
             // 
@@ -101,6 +105,7 @@
             this.numericUpDownC.Name = "numericUpDownC";
             this.numericUpDownC.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownC.TabIndex = 6;
+            this.numericUpDownC.ValueChanged += new System.EventHandler(this.numericUpDownC_ValueChanged);
             // 
             // textBoxB
             // 
@@ -108,6 +113,7 @@
             this.textBoxB.Name = "textBoxB";
             this.textBoxB.Size = new System.Drawing.Size(120, 22);
             this.textBoxB.TabIndex = 7;
+            this.textBoxB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxB_KeyDown);
             // 
             // textBoxC
             // 
@@ -115,6 +121,7 @@
             this.textBoxC.Name = "textBoxC";
             this.textBoxC.Size = new System.Drawing.Size(120, 22);
             this.textBoxC.TabIndex = 8;
+            this.textBoxC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxC_KeyDown);
             // 
             // labelA
             // 
