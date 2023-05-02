@@ -107,6 +107,25 @@ namespace Lab4._2
             if (e.KeyCode == Keys.Enter)
                 model.setC(getValueFromTextBox(sender));
         }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Записываем содержимое в созданные в settings переменные
+            Properties.Settings.Default.a = model.getA();
+            Properties.Settings.Default.b = model.getB();
+            Properties.Settings.Default.c = model.getC();
+
+            // Сохраняем значения
+            Properties.Settings.Default.Save();
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            // Получаем переменные из settings и зыписываем их в модель
+            model.setA(Properties.Settings.Default.a);
+            model.setC(Properties.Settings.Default.c);
+            model.setB(Properties.Settings.Default.b);
+        }
     }
     public class Model
     {
@@ -122,9 +141,9 @@ namespace Lab4._2
         {
             newA = getChekedInterval(newA);
             if (newA > b) b = newA;
-            else if (newA > c) c = newA;
-            else a = newA;
+            if (newA > c) c = newA;
 
+            a = newA;
             observer.Invoke(this, null);
         }
         public void setB(int newB)
@@ -140,9 +159,9 @@ namespace Lab4._2
         {
             newC = getChekedInterval(newC);
             if (newC < b) b = newC;
-            else if (newC < a) a = newC;
-            else c = newC;
+            if (newC < a) a = newC;
 
+            c = newC;
             observer.Invoke(this, null);
         }
 
